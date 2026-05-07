@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+
+metadata:
+  name: tax-calculator-run
+
+spec:
+
+  pipelineRef:
+    name: tax-calculator-pipeline
+
+  params:
+
+    - name: image
+      value: us.icr.io/tanishqnamespace/tax-calculator:v1
+
+  workspaces:
+
+    - name: shared-workspace
+      emptyDir: {}
